@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NavigationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::controller(NavigationController::class)->group(function () {
+    Route::get('/', 'index')->name('navigation.index');
+    Route::get('/catalogo', 'catalogo')->name('navigation.catalogo');
+    Route::get('/noticias', 'noticias')->name('navigation.noticias');
+    Route::get('/contacto', 'contacto')->name('navigation.contacto');
+});
+
+/*
 Route::get('/', function () {
     return view('welcome');
 });
-
+*/
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

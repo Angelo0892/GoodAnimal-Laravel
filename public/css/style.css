@@ -1,0 +1,282 @@
+/*
+*   Página principal
+*/
+
+/*
+* nav bar
+*/
+
+body{
+    background-color: #fff0f6;
+}
+
+.navbar{
+    background-color: #fdcae1;
+}
+
+.navbar-brand{
+    color: #95677d;   
+}
+
+.nav-link{
+    color: #95677d;
+}
+
+.nav-link:hover{
+    color: #95677d;
+    text-decoration: underline;
+}
+
+/*
+*   secciones
+*/
+
+.section_main{
+    background-color: #F6A5C0;
+}
+
+.text_index{
+    color: #95677d;
+}
+
+/*
+*   Relacionado con la barra de navegación
+*/
+
+.navbar_main .nav_opcion{
+    height:20px;
+    text-align:center;
+}
+
+.navbar_main .nav_opcion li{
+    display:inline-block;
+    margin-right:10px;
+}
+
+.nav_title{
+    text-align: center;
+}
+
+.button_aside{
+    border: none;
+    background-color: #F6A5C0;
+}
+
+/*
+*   Relacionado con el carrusel
+*/
+.carousel_control{
+  background-color: rgb( 25%, 255, 229, 240);
+}
+
+.carousel_container {
+    height: 400px;
+}
+
+@media (600px >= width) {
+    .carousel_container {
+        height: 250px;
+    }
+}
+
+.carousel_container img{
+    height: auto;
+    width: 100px;
+    object-fit: cover;
+}
+
+
+/*
+*   Cartas después del texto
+*/
+
+.sections_cards{
+    padding: 2rem;
+    text-align: center;
+    justify-content: center;
+}
+
+.sections_noved{
+    background-color: #E3B1C8;
+    padding: 2rem 0;
+    text-align: center;
+    justify-content: center;
+}
+
+.card_space_noved{
+    padding: 1rem;
+    margin: 2rem;
+    background-color: #FFF0F6;
+    border: 10px solid #C999AF;
+    border-radius: 10px;
+}
+
+.card_image_noved{
+    background-color: #C999AF;
+    border: 5px solid #C999AF;
+    border-radius: 5px;
+    margin: 0;
+}
+
+@media (600px <= width) {
+    .card_space{
+        padding: 1rem;
+        margin: 1rem;
+    }
+}
+
+.card_novelty{
+    display: flex;
+    justify-content: center;
+}
+
+.card_title_noved{
+    margin: 2rem;
+    color: #C999AF;
+    text-decoration: solid;
+}
+
+.button_card_noved{
+    text-decoration: none;
+    background-color: #C999AF;
+    color: #ffe5f0;
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+
+.button_card_noved:hover{
+    background-color: #95677d;
+}
+
+/*
+* cartas para general
+*/
+
+.card_space{
+    padding: 1rem;
+    margin: 2rem;
+    background-color: #e3b1c8;
+    border: 10px solid #FFE5F0;
+    border-radius: 10px;
+}
+
+.card_image{
+    background-color: #FFE5F0;
+    border: 5px solid #FFE5F0;
+    border-radius: 5px;
+    margin: 0;
+    object-fit: cover;
+    height: 150px;
+    width: 150px;
+}
+
+.card_title{
+    margin: 2rem;
+    color: #FFF0F6;
+    text-decoration: solid;
+}
+
+.button_card{
+    text-decoration: none;
+    background-color: #FFE5F0;
+    color: #E3B1C8;
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+
+.button_card:hover{
+    background-color: #fff0f6;
+}
+
+/*
+*   Formularios
+*/
+
+.section_form{
+    padding: 4rem 0;
+    justify-content: center;
+}
+
+.section_title{
+    background-color: #E3B1C8;
+    border-color: #95677d;
+    border-width: 5px;
+    border-style: solid;
+    color: #FFF0F6;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.form_main{
+    background-color: #FFF0F6;
+    border-color: #C999AF;
+    color: #C999AF;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.from_register{
+    text-align: center;
+}
+
+.form_control{
+    background-color: #E3B1C8;
+    color: #FFF0F6;
+}
+
+/*
+*   footer
+*/
+.footer_main{
+    background-color: #fdcae1;
+    padding: 20px;
+    text-align: center;
+    color: #95677D;
+}
+
+/*
+* Codigo general
+*/
+.linea_sub{
+    background-color: #c999af;
+    height: 10px;
+    border-radius: 10px;
+}
+
+.section_sub{
+    justify-content: center;
+    color: #c999af;
+    text-align: center;
+}
+
+.imagen_animal{
+    justify-content: center;
+    text-align: center;
+    background-color: rgb( 25%, 255, 229, 240);
+    height: 300px;
+    object-fit: cover;
+}
+
+._imagen{
+    border-color: #C999AF;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    height: 300px;
+}
+
+@media (600px >= width) {
+    ._imagen, .imagen_animal{
+        height: 200px;
+    }
+
+}
+
+
+
+.sub_titulo{
+    
+}
