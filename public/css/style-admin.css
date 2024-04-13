@@ -1,0 +1,179 @@
+:root{
+    --body-color: #fff0f6;
+    --sidebar-color: #FDCAE1;
+    --primary-color: #FFF0F6;
+    --secundary-color: #E3B1C8;
+    --third-color: #FFE5F0;
+    --primary-color-hover: #95677D;
+    --toggle-color: ;
+    --text-color: #95677D;
+    --text-hover: #fff0f6;
+
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+}
+
+body{
+    height: 100vh;
+    background: var(--body-color);
+    background-color: #FFF0F6;
+}
+
+/* ========== Resuable CSS =========== */
+.sidebar .text{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.sidebar .image{
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+}
+
+/* ========== Sidebar =========== */
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 255px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+}
+
+.sidebar header{
+    position: relative;
+}
+
+.sidebar .image-text .logo{
+    font-size: 40px;
+    border-radius: 6px;
+}
+
+.sidebar header .image-text{
+    display: flex;
+    align-items: center;
+}
+
+header .image-text .header-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.header-text .name{
+    font-weight: 600;
+}
+
+.header-text .profession{
+    margin-top: -2px;
+}
+
+.sidebar .menu-bar{
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/*=========== Sidebar Links ==========*/
+
+.sidebar li{
+    height: 50px;
+    background: #FFF0F6;
+    margin-top: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.sidebar li .icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    font-size: 20px;
+}
+
+.sidebar li .icon,
+.sidebar li .text{
+    transition: var(--tran-02);
+    color: var(--text-color);
+}
+
+.sidebar li a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: var(--tran-02);
+    border-radius: 10px;
+}
+
+.sidebar li a:hover{
+    background-color: var(--primary-color-hover);
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+    color: var(--primary-color);
+}
+
+.sidebar ul{
+    padding: 0;
+    margin: 0;
+}
+
+/*================ Table ==============*/
+
+.content_table{
+    padding: 40px;
+}
+
+.table_database{
+    background-color: var(--third-color);
+    border-color: var(--secundary-color);
+    color: #95677D;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.search_table{
+    display: flex;
+    justify-content: center;
+}
+
+.search, .button{
+    padding: 5px;
+}
+
+.search_table .button{
+    background-color: var(--secundary-color);
+    color: var(--primary-color);
+    border-width: 0px;
+    border-radius: 5px;
+}
+
+.search_table .button:hover{
+    background-color: var(--third-color);
+    color: var(--secundary-color);
+    border-width: 3px;
+    border: var(--secundary-color);
+    border-style: solid;
+}
+
+.search{
+    background-color: var(--third-color);
+    border-width: 3px;
+    border: var(--secundary-color);
+    border-style: solid;
+    color: var(--text-color);
+    border-radius: 5px;
+}
