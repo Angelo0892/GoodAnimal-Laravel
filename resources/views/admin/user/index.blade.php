@@ -3,17 +3,20 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    Animal
+    
 @stop
 
 @section('content')
-    Animales
+
+    <a href="{{route('admin.user.create')}}">Creacion</a>
+
+    @include('admin.user.components.table')
 @stop
 
 @section('css')
-    Esto es una página para crud de animales
+    
 @stop
 
 @section('js')
-
+    
 @stop
