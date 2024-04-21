@@ -196,7 +196,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-light-pink elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -238,7 +238,7 @@ return [
 
     'right_sidebar' => false,
     'right_sidebar_icon' => 'fas fa-cogs',
-    'right_sidebar_theme' => 'dark',
+    'right_sidebar_theme' => 'light',
     'right_sidebar_slide' => true,
     'right_sidebar_push' => true,
     'right_sidebar_scrollbar_theme' => 'os-theme-light',
@@ -295,6 +295,7 @@ return [
 
     'menu' => [
         // Navbar items:
+        /*
         [
             'type' => 'navbar-search',
             'text' => 'search',
@@ -304,8 +305,10 @@ return [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
+        */
 
         // Sidebar items:
+        /*
         [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
@@ -322,17 +325,19 @@ return [
             'label' => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
+        */
+        ['header' => 'OPCIONES DE CUENTA'],
         [
-            'text' => 'profile',
-            'url' => 'admin/settings',
+            'text' => 'Usuarios',
+            'route' => 'admin.user.index',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
+            'text' => 'Informacion Animal',
+            'route' => 'admin.information.index',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        /*
         [
             'text' => 'multilevel',
             'icon' => 'fas fa-fw fa-share',
@@ -371,6 +376,8 @@ return [
                 ],
             ],
         ],
+        */
+        /*
         ['header' => 'labels'],
         [
             'text' => 'important',
@@ -387,6 +394,7 @@ return [
             'icon_color' => 'cyan',
             'url' => '#',
         ],
+        */
     ],
 
     /*

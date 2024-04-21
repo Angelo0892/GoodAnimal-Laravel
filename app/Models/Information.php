@@ -12,4 +12,15 @@ class Information extends Model
     protected $table = 'informations';
 
     protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsToMany(User::class, 'Authors', 'id_information', 'id_user')
+        ->withPivot('type', 'date_time');
+    }
+
+    public function subtitles()
+    {
+        return $this->hasMany(Subtitle::class, 'id_information');
+    }
 }

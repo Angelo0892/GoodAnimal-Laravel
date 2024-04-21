@@ -22,6 +22,15 @@
         <label for="">Fecha y hora: </label>
         <label for="">{{$information->date_time}}</label>
     </div>
+
+    @foreach ($subtitles as $subtitle)
+        <div>
+            <label for="">{{$subtitle->subtitle}}</label>
+        </div>
+        <div>
+            <p>{!! nl2br(e($subtitle->information)) !!}</p>
+        </div>
+    @endforeach
     
 @stop
 

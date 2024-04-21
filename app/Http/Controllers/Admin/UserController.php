@@ -43,11 +43,23 @@ class UserController extends Controller
     }
 
     public function update(User $user, Request $request){
-        
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email
-        ]);
+
+        $hashedPassword = Hash::make($request->password);
+
+        if($request->change_password === 'generate'){
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $hashedPassword,
+            ]);
+
+        }elseif($request->change_password === 'no_generate'){
+
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email
+            ]);
+        }
 
         return redirect()->route('admin.user.index');
     }

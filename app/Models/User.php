@@ -58,4 +58,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function information()
+    {
+        return $this->belongsToMany(Information::class, 'Authors', 'id_user', 'id_information')
+        ->withPivot('type', 'date_time');
+    }
 }

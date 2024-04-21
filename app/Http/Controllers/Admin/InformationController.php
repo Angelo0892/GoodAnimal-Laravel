@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Information;
+use App\Models\Subtitle;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class InformationController extends Controller
 {
@@ -21,11 +23,15 @@ class InformationController extends Controller
     }
 
     public function modify(Information $information){
-        return view('admin.information.modify', compact('information'));
+
+        $subtitles = Subtitle::all()->where('id_information', $information->id);
+        return view('admin.information.modify', compact('information', 'subtitles'));
     }
 
     public function show(Information $information){
-        return view('admin.information.show', compact('information'));
+
+        $subtitles = Subtitle::all()->where('id_information', $information->id);
+        return view('admin.information.show', compact('information', 'subtitles'));
     }
 
     public function store(Request $request){
@@ -40,6 +46,17 @@ class InformationController extends Controller
 
         $information->save();
 
+        $user = Auth::user();
+        $information->user()->attach($user->id, ['type' => "A", 'date_time' => $now]);
+
+        foreach ($request->subtitle as $key => $subtitle) {
+            Subtitle::create([
+                'id_information' => $information->id,
+                'subtitle' => $subtitle,
+                'information' => $request->information[$key],
+            ]);
+        }
+
         return redirect()->route('admin.information.index');
     }
 
@@ -51,6 +68,20 @@ class InformationController extends Controller
             'type' => $request->type,
             'date_time' => $now
         ]);
+
+        $user = Auth::user();
+        $information->user()->attach($user->id, ['type' => "M", 'date_time' => $now]);
+
+        $information->subtitles()->delete();
+        
+        foreach ($request->subtitle as $key => $subtitle) {
+            Subtitle::create([
+                'id_information' => $information->id,
+                'subtitle' => $subtitle,
+                'information' => $request->information[$key],
+            ]);
+        }
+
         return redirect()->route('admin.information.index');
     }
 

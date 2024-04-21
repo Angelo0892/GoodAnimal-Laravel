@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('subtitles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_information');
-            $table->string('subtitles', 50);
+            $table->string('subtitle', 50);
             $table->longText('information');
 
             $table->foreign('id_information')->references('id')->on('informations')

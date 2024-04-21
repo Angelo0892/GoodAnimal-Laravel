@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_information');
             $table->string('type', 1);
+            $table->dateTime('date_time');
             
             $table->foreign('id_information')->references('id')->on('informations')
             ->onDelete('cascade');
