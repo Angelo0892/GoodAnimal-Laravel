@@ -1,8 +1,9 @@
-<table>
-    <thead>
+<table class="table">
+    <thead class="table-light">
         <th>Titulo</th>
         <th>Tipo</th>
         <th>Fecha y hora</th>
+        <th colspan="3">Acciones</th>
     </thead>
 
     <tbody>
@@ -25,7 +26,7 @@
                         @csrf
                         @method('DELETE')
 
-                        <button type="submit">Eliminar</button>
+                        <button type="submit" class="btn btn-link">Eliminar</button>
                     </form>
                 </td>
             @endcan

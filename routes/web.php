@@ -19,6 +19,7 @@ Route::controller(NavigationController::class)->group(function () {
     Route::get('/catalogo', 'catalogo')->name('navigation.catalogo');
     Route::get('/noticias', 'noticias')->name('navigation.noticias');
     Route::get('/contacto', 'contacto')->name('navigation.contacto');
+    Route::get('/animal/{information}', 'animal')->name('navigation.animal');
 });
 
 /*

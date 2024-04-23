@@ -1,6 +1,9 @@
-<div>
-    <label for="">Titulo</label>
-    <input type="text" name="title" value="@isset($information){{$information->title}}@endisset">
+<div class="mb-3">
+    <label for="" class="form-label">Titulo:</label>
+    <input type="text" name="title" class="form-control" value="@isset($information){{$information->title}}@else {{old('title')}} @endisset">
+    @error('title')
+        <div class="alert alert-danger">{{$message}}</div>
+    @enderror
 </div>
 
 <div>
@@ -13,10 +16,11 @@
 </div>
 
 @isset($information)
-    <div>
-        <label for="" class="product-label">Imagen del Documento:</label>
-        <img src="/{{$information->imagen}}" class="">
-    </div>
+    <section class="row imagen_animal">
+        <div>
+            <img class="_imagen" src="/{{$information->imagen}}" class="d-block w-100" alt="">
+        </div>
+    </section>
 
     <div>
         <input type="radio" id="radio_image" name="change_image" value="generate" onclick="generateImage('with_image')">
@@ -27,42 +31,46 @@
     </div>
 @endisset
 
-<div id="generateImage_id">
+<div id="generateImage_id" class="m-2">
+    <label for="" class="product-label">Agregar imagen:</label>
     <input id="default_btn_image" type="file" name="image" accept="image/*">
+    @error('image')
+        <div class="alert alert-danger">{{$message}}</div>
+    @enderror
 </div>
 
 <div id="entries">
     @isset($information)
         @foreach ($subtitles as $subtitle)
             <div>
-                <label for="subtitle">Subtítulo:</label><br>
-                <input type="text" class="subtitle" name="subtitle[]" value="{{$subtitle->subtitle}}"><br><br>
-                <label for="information">Contenido:</label><br>
-                <textarea class="information" name="information[]" rows="4" cols="50">{{$subtitle->information}}</textarea><br><br>
-                <button type="button" class="deleteEntry">Eliminar</button>
+                <label for="subtitle" class="form-label">Subtítulo:</label><br>
+                <input type="text" class="subtitle form-control" name="subtitle[]" value="{{$subtitle->subtitle}}"><br><br>
+                <label for="information" class="form-label">Contenido:</label><br>
+                <textarea class="information form-control" name="information[]" rows="4" cols="50">{{$subtitle->information}}</textarea><br><br>
+                <button type="button" class="deleteEntry btn btn-danger m-2">Eliminar</button>
             </div>
         @endforeach
     @else
         <div>
-            <label for="subtitle">Subtítulo:</label><br>
-            <input type="text" class="subtitle" name="subtitle[]"><br><br>
-            <label for="information">Contenido:</label><br>
-            <textarea class="information" name="information[]" rows="4" cols="50"></textarea><br><br>
-            <button type="button" class="deleteEntry">Eliminar</button>
+            <label for="subtitle" class="form-label">Subtítulo:</label><br>
+            <input type="text" class="subtitle form-control" name="subtitle[]"><br><br>
+            <label for="information" class="form-label">Contenido:</label><br>
+            <textarea class="information form-control" name="information[]" rows="4" cols="50"></textarea><br><br>
+            <button type="button" class="deleteEntry btn btn-danger m-2">Eliminar</button>
         </div>
     @endisset
 </div>
 
 <div>
-    <button type="button" id="addEntry">Agregar Nuevo</button>
+    <button type="button" id="addEntry" class="btn btn-info m-2">Agregar Nuevo</button>
 </div>
 
 <div>
-    <button type="submit">Aceptar</button>
+    <button type="submit" class="btn btn-primary m-2">Aceptar</button>
 </div>
 
 <div>
-    <a href="{{route('admin.information.index')}}">Cancelar</a>
+    <a href="{{route('admin.information.index')}}" class="btn btn-danger m-2">Cancelar</a>
 </div>
 
 <script>
@@ -70,8 +78,6 @@
     //Funciones para cambiar imagen
 
     var camp_image = document.getElementById('generateImage_id');
-
-    camp_image.style.display = 'none';
 
     function generateImage(generate) {
 
@@ -89,11 +95,11 @@
         const entriesDiv = document.getElementById("entries");
         const newEntry = document.createElement("div");
         newEntry.innerHTML = `
-            <label for="subtitle">Subtítulo:</label><br>
-            <input type="text" class="subtitle" name="subtitle[]"><br><br>
-            <label for="information">Contenido:</label><br>
-            <textarea class="information" name="information[]" rows="4" cols="50"></textarea><br><br>
-            <button type="button" class="deleteEntry">Eliminar</button>
+            <label for="subtitle" class="form-label">Subtítulo:</label><br>
+            <input type="text" class="subtitle form-control" name="subtitle[]"><br><br>
+            <label for="information" class="form-label">Contenido:</label><br>
+            <textarea class="information form-control" name="information[]" rows="4" cols="50"></textarea><br><br>
+            <button type="button" class="deleteEntry btn btn-danger m-2">Eliminar</button>
         `;
         entriesDiv.appendChild(newEntry);
     });

@@ -21,7 +21,7 @@ body{
 .nav-item{
     list-style-type: none;
 }
-
+/*
 .nav-link{
     padding: 0 10px;
     display: flex;
@@ -30,8 +30,17 @@ body{
     height: 100%;
     color: #95677d;
 }
+*/
+.nav_link{
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #95677d;
+}
 
-.nav-link:hover{
+.nav_link:hover{
     color: #95677d;
     text-decoration: underline;
 }
@@ -202,7 +211,6 @@ body{
 */
 
 .section_form{
-    padding: 4rem 0;
     justify-content: center;
 }
 

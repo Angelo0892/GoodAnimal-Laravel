@@ -1,6 +1,6 @@
-<div>
-    <label for="">Nombre:</label>
-    <input name="name" type="text" value="@isset($role){{$role->name}}@else{{old('name')}}@endisset">
+<div class="mb-3">
+    <label for="" class="form-label">Nombre:</label>
+    <input name="name" type="text" class="form-control" value="@isset($role){{$role->name}}@else{{old('name')}}@endisset">
     @error('name')
         <div class="alert alert-danger">{{$message}}</div>
     @enderror
@@ -25,9 +25,9 @@
 @endisset
 
 <div>
-    <button type="submit">Aceptar</button>
+    <button type="submit" class="btn btn-primary m-2">Aceptar</button>
 </div>
 
 <div>
-    <a href="{{ route('admin.role.index') }}">Volver</a>
+    <a href="{{ route('admin.role.index') }}" class="btn btn-danger m-2">Volver</a>
 </div>

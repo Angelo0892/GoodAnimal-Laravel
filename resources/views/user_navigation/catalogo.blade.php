@@ -8,51 +8,21 @@
       
         </div>
         <div class="col-10 col-lg-8">
-          <h4 class="m-4">Catalogo</h4>
+          <h3 class="m-4">Catalogo</h3>
         </div>
     </section>
     
     <section class="card_novelty col-12 row">
 
+      @foreach ($informations as $information)
         <div class="col-lg-2 col-sm-6 my-2 card_space">
-            <img src="image/conejos_1.jpg" class="card_image" alt="...">
-            <div class="card-body">
-              <h5 class="card_title">Card title</h5>
-              <a href="#" class="button_card">Ver</a>
-            </div>
+          <img src="/{{$information->imagen}}" class="card_image" alt="...">
+          <div class="card-body">
+            <h5 class="card_title">{{$information->title}}</h5>
+            <a href="{{route('navigation.animal', $information)}}" class="button_card">Ver</a>
+          </div>
         </div>
-
-        <div class="col-lg-2 col-sm-6 my-2 card_space">
-            <img src="image/conejos_1.jpg" class="card_image" alt="...">
-            <div class="card-body">
-              <h5 class="card_title">Card title</h5>
-              <a href="#" class="button_card">Ver</a>
-            </div>
-        </div>
-
-        <div class="col-lg-2 col-sm-6 my-2 card_space">
-            <img src="image/conejos_1.jpg" class="card_image" alt="...">
-            <div class="card-body">
-              <h5 class="card_title">Card title</h5>
-              <a href="#" class="button_card">Ver</a>
-            </div>
-        </div>
-
-        <div class="col-lg-2 col-sm-6 my-2 card_space">
-            <img src="image/conejos_1.jpg" class="card_image" alt="...">
-            <div class="card-body">
-              <h5 class="card_title">Card title</h5>
-              <a href="#" class="button_card">Ver</a>
-            </div>
-        </div>
-
-        <div class="col-lg-2 col-sm-6 my-2 card_space">
-            <img src="image/conejos_1.jpg" class="card_image" alt="...">
-            <div class="card-body">
-              <h5 class="card_title">Card title</h5>
-              <a href="#" class="button_card">Ver</a>
-            </div>
-        </div>
+      @endforeach
 
     </section>
 </section>

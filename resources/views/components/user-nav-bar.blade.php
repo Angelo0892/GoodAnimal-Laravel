@@ -10,11 +10,11 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
   
           <li class="nav-item">
-            <a class="nav-link" href="{{route('navigation.catalogo')}}">Animales</a>
+            <a class="nav-link nav_link" href="{{route('navigation.catalogo')}}">Animales</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="{{route('navigation.noticias')}}">Noticias</a>
+            <a class="nav-link nav_link" href="{{route('navigation.noticias')}}">Noticias</a>
           </li>
         </ul>
 
@@ -22,16 +22,16 @@
           @if (Route::has('login'))
               @auth
                   <li class="nav-item nav-login">
-                    <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>
+                    <a href="{{ url('/dashboard') }}" class="nav-link nav_link">Dashboard</a>
                   </li>
                   @else
                   
                   <li class="nav-item nav-login">
-                    <a href="{{ route('login') }}" class="nav-link">Log in</a>
+                    <a href="{{ route('login') }}" class="nav-link nav_link">Log in</a>
                   </li>
                   <li class="nav-item nav-login">
                     @if (Route::has('register'))
-                      <a href="{{ route('register') }}" class="nav-link">Register</a>
+                      <a href="{{ route('register') }}" class="nav-link nav_link">Register</a>
                     @endif
                   </li>
               @endauth

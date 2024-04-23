@@ -9,14 +9,14 @@
 @section('content')
 
     @can('admin.information.create')
-        <a href="{{route('admin.information.create')}}">Creacion</a>
+        <a href="{{route('admin.information.create')}}" class="btn btn-info m-2">Crear</a>
     @endcan
     
     @include('admin.information.components.table')
 @stop
 
 @section('css')
-    
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @stop
 
 @section('js')

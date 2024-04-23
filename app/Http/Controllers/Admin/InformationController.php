@@ -37,6 +37,14 @@ class InformationController extends Controller
 
     public function store(Request $request){
 
+        $request->validate([
+            'title' => 'required',
+            'type' => 'required',
+            'image' => 'required',
+        ], [
+            'required' => 'El campo debe de ser llenado',
+        ]);
+
         if($request->hasFile('image')){
             $file = $request->file('image');
             $destination = 'images/';
@@ -76,6 +84,14 @@ class InformationController extends Controller
         
         if($request->change_image === 'generate'){
 
+            $request->validate([
+                'title' => 'required',
+                'type' => 'required',
+                'image' => 'required',
+            ], [
+                'required' => 'El campo debe de ser llenado',
+            ]);
+
             if (file_exists($information->imagen)) {
                 // Eliminar la imagen
                 unlink($information->imagen); 
@@ -99,6 +115,13 @@ class InformationController extends Controller
             ]);
 
         }elseif($request->change_image === 'no_generate'){
+
+            $request->validate([
+                'title' => 'required',
+                'type' => 'required',
+            ], [
+                'required' => 'El campo debe de ser llenado',
+            ]);
 
             $information->update([
                 'title' => $request->title,

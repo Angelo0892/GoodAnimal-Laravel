@@ -1,14 +1,14 @@
-<div>
-    <label for="">Nombre:</label>
-    <input type="text" name="name" value="@isset($user){{$user->name}}@else{{old('name')}}@endisset">
+<div class="mb-3">
+    <label for="" class="form-label">Nombre:</label>
+    <input type="text" name="name" class="form-control" value="@isset($user){{$user->name}}@else{{old('name')}}@endisset">
     @error('name')
         <div class="alert alert-danger">{{$message}}</div>
     @enderror
 </div>
 
-<div>
-    <label for="">Email:</label>
-    <input type="email" name="email" value="@isset($user){{$user->email}}@else{{old('email')}}@endisset">
+<div class="mb-3">
+    <label for="" class="form-label">Email:</label>
+    <input type="email" name="email" class="form-control" value="@isset($user){{$user->email}}@else{{old('email')}}@endisset">
     @error('email')
         <div class="alert alert-danger">{{$message}}</div>
     @enderror
@@ -24,9 +24,9 @@
     </div>
 @endisset
 
-<div id="block_passsword">
-    <label for="passworduser">Contraseña:</label>
-    <input name="password" type="password">
+<div id="block_passsword" class="mb-3">
+    <label for="passworduser" class="form-label">Contraseña:</label>
+    <input name="password" type="password" class="form-control">
     @error('password')
         <div class="alert alert-danger">{{$message}}</div>
     @enderror
@@ -34,8 +34,6 @@
 
 <div>
     <h5>Listado de roles</h5>
-
-    
 
     @isset($user)
         @foreach ($roles as $role)
@@ -61,12 +59,12 @@
     
 </div>
 
-<div>
-    <button type="submit">Aceptar</button>
+<div class="m-2">
+    <button type="submit" class="btn btn-primary">Aceptar</button>
 </div>
 
-<div>
-    <a href="{{route('admin.user.index')}}">Cancelar</a>
+<div class="m-2">
+    <a href="{{route('admin.user.index')}}" class="btn btn-danger">Cancelar</a>
 </div>
 
 <script>

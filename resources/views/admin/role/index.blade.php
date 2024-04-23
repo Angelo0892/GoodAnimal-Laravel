@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('css')
-    
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @stop
 
 @section('js')
@@ -13,7 +13,7 @@
 @section('content')
 
     @can('admin.role.create')
-        <a href="{{route('admin.role.create')}}">Crear</a>
+        <a href="{{route('admin.role.create')}}" class="btn btn-info m-2">Crear</a>
     @endcan
     
     @include('admin.role.components.table')

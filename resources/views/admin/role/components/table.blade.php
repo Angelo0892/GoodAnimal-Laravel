@@ -1,13 +1,14 @@
 <section>
 
-    <table>
-        <thead>
+    <table class="table">
+        <thead class="table-light">
             <tr>
                 <th>Rol</th>
+                <th colspan="2">Acciones</th>
             </tr>
         </thead>
 
-        <tbody>
+        <tbody class="change">
             @foreach ($roles as $role)
                 <tr>
                     <td>{{$role->name}}</td>
@@ -28,7 +29,7 @@
                                 @csrf
 
                                 @method('DELETE')
-                                <button type="submit">Eliminar</button>
+                                <button type="submit" class="btn btn-link">Eliminar</button>
                             </form>
                         </td>
                     @endcan

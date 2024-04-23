@@ -9,7 +9,7 @@
 @section('content')
 
     @can('admin.user.create')
-        <a href="{{route('admin.user.create')}}">Creacion</a>
+        <a href="{{route('admin.user.create')}}" class="btn btn-info m-2">Crear</a>
     @endcan
     
 
@@ -17,7 +17,7 @@
 @stop
 
 @section('css')
-    
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @stop
 
 @section('js')
