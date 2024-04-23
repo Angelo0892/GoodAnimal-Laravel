@@ -12,11 +12,14 @@ use Illuminate\Support\Facades\Auth;
 
 class InformationController extends Controller
 {
-    public function index(){
-        
-        $informations = Information::all();
+    public function index(Request $request){
 
-        return view("admin.information.index", compact('informations'));
+        //echo $request->buscarProducto;
+        $searchDocument = trim($request->searchDocument);
+        
+        $informations = Information::where('title', 'LIKE', '%' . $searchDocument . '%')->paginate(8);
+
+        return view("admin.information.index", compact('informations', 'searchDocument'));
     }
 
     public function create(){

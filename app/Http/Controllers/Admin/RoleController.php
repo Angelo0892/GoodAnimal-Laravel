@@ -9,11 +9,12 @@ use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
 
-        $roles = Role::all();
+        $searchRole = trim($request->searchRole);
+        $roles = Role::where('name', 'LIKE', '%' . $searchRole . '%')->paginate(8);
 
-        return view('admin.role.index' , compact('roles'));
+        return view('admin.role.index' , compact('roles', 'searchRole'));
     }
 
     public function create(){

@@ -8,10 +8,15 @@
 
 @section('content')
 
+<div class="row row-cols-12">
     @can('admin.information.create')
         <a href="{{route('admin.information.create')}}" class="btn btn-info m-2">Crear</a>
     @endcan
-    
+    @include('admin.information.components.search')
+</div>
+   
+
+
     @include('admin.information.components.table')
 @stop
 

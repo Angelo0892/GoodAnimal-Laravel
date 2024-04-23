@@ -10,11 +10,12 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    public function index(){
-        
-        $users = User::all();
+    public function index(Request $request){
 
-        return view("admin.user.index", compact('users'));
+        $searchUser = trim($request->searchUser);
+        $users = User::where('name', 'LIKE', '%' . $searchUser . '%')->paginate(8);
+
+        return view("admin.user.index", compact('users', 'searchUser'));
     }
 
     public function create(){

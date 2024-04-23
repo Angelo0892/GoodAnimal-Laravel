@@ -14,16 +14,21 @@ class NavigationController extends Controller
         return view('user_navigation.index');
     }
 
-    public function catalogo(){
+    public function catalogo(Request $request){
 
-        $informations = Information::where('type', 'C')->take(12)->get();
-        return view('user_navigation.catalogo', compact('informations'));
+        $searchDocument = trim($request->searchDocument);
+        $informations = Information::where('type', 'C')
+        ->where('title', 'LIKE', '%' . $searchDocument . '%')->paginate(12);
+        
+        return view('user_navigation.catalogo', compact('informations', 'searchDocument'));
     }
 
-    public function noticias(){
+    public function noticias(Request $request){
 
-        $informations = Information::where('type', 'N')->take(12)->get();
-        return view('user_navigation.noticias', compact('informations'));
+        $searchDocument = trim($request->searchDocument);
+        $informations = Information::where('type', 'N')
+        ->where('title', 'LIKE', '%' . $searchDocument . '%')->paginate(4);
+        return view('user_navigation.noticias', compact('informations', 'searchDocument'));
     }
 
     public function contacto(){

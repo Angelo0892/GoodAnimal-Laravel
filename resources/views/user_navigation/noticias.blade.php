@@ -11,6 +11,13 @@
           <h3 class="m-4">Noticias</h3>
         </div>
     </section>
+
+    <section class="row col-lg-8">
+      <form class="d-flex" role="search" action="{{route('navigation.noticias')}}" method="GET">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="searchDocument">
+        <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+      </form>
+    </section>
     
     <section class="card_novelty col-12 row">
 
@@ -23,7 +30,10 @@
           </div>
         </div>
       @endforeach
-
+      <div class="paginate-admin d-flex justify-content-center align-items-center">
+        {{ $informations->appends(['searchDocument' => $searchDocument])->links('pagination::bootstrap-4') }}
+      </div>
     </section>
+    
 </section>
 @endsection

@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table table-responsive">
     <thead class="table-light">
         <th>Titulo</th>
         <th>Tipo</th>
@@ -37,3 +37,7 @@
     </tbody>
 
 </table>
+
+<div class="paginate-admin">
+    {{ $informations->appends(['searchDocument' => $searchDocument])->links('pagination::bootstrap-4') }}
+</div>

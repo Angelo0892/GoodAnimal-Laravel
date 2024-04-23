@@ -1,6 +1,6 @@
 <section>
 
-    <table class="table">
+    <table class="table table-responsive">
         <thead class="table-light">
             <tr>
                 <th>Rol</th>
@@ -38,4 +38,8 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="paginate-admin">
+        {{ $roles->appends(['searchRole' => $searchRole])->links('pagination::bootstrap-4') }}
+    </div>
 </section>

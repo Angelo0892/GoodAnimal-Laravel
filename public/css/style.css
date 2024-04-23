@@ -291,3 +291,19 @@ body{
     }
 
 }
+
+/*
+* Paginate
+*/
+.paginate-admin .pagination {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.paginate-admin .pagination li a {
+    color: rgb(46, 7, 7); /* Color del texto blanco */
+}
+
+.paginate-admin .pagination li.active span {
+    background-color: #E3B1C8;
+}

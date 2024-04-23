@@ -1,6 +1,6 @@
 <div class="mb-3">
     <label for="" class="form-label">Titulo:</label>
-    <input type="text" name="title" class="form-control" value="@isset($information){{$information->title}}@else {{old('title')}} @endisset">
+    <input type="text" name="title" class="form-control" value="@isset($information){{$information->title}}@else{{old('title')}}@endisset">
     @error('title')
         <div class="alert alert-danger">{{$message}}</div>
     @enderror

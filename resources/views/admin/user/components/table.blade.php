@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table table-responsive">
     <thead class="table-light">
         <th>Nombre</th>
         <th>Email</th>
@@ -33,3 +33,6 @@
     </tbody>
 
 </table>
+<div class="paginate-admin">
+    {{ $users->appends(['searchUser' => $searchUser])->links('pagination::bootstrap-4') }}
+</div>
