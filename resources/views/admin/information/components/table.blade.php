@@ -11,16 +11,25 @@
             <td>{{$information->title}}</td>
             <td>{{$information->type}}</td>
             <td>{{$information->date_time}}</td>
-            <td><a href="{{route('admin.information.modify', $information->id)}}">Modificar</a></td>
-            <td><a href="{{route('admin.information.show', $information->id)}}">Mostrar</a></td>
-            <td>
-                <form action="{{route('admin.information.destroy', $information->id)}}" method="POST">
-                    @csrf
-                    @method('DELETE')
+            @can('admin.information.modify')
+                <td><a href="{{route('admin.information.modify', $information->id)}}">Modificar</a></td>
+            @endcan
 
-                    <button type="submit">Eliminar</button>
-                </form>
-            </td>
+            @can('admin.information.show')
+                <td><a href="{{route('admin.information.show', $information->id)}}">Mostrar</a></td>
+            @endcan
+            
+            @can('admin.information.destroy')
+                <td>
+                    <form action="{{route('admin.information.destroy', $information->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </td>
+            @endcan
+            
         </tr>
             
         @endforeach

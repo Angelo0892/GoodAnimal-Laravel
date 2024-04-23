@@ -9,16 +9,24 @@
         <tr>
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
-            <td><a href="{{route('admin.user.modify', $user->id)}}">Modificar</a></td>
-            <td><a href="{{route('admin.user.show', $user->id)}}">Mostrar</a></td>
-            <td>
-                <form action="{{route('admin.user.destroy', $user->id)}}" method="POST">
-                    @csrf
-                    @method('DELETE')
+            @can('admin.user.modify')
+                <td><a href="{{route('admin.user.modify', $user->id)}}">Modificar</a></td>
+            @endcan
+            
+            @can('admin.user.show')
+                <td><a href="{{route('admin.user.show', $user->id)}}">Mostrar</a></td>
+            @endcan
+            
+            @can('admin.user.destroy')
+                <td>
+                    <form action="{{route('admin.user.destroy', $user->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
 
-                    <button type="submit">Eliminar</button>
-                </form>
-            </td>
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </td>
+            @endcan
         </tr>
         @endforeach
     </tbody>

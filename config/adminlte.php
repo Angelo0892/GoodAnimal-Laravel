@@ -257,7 +257,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -301,11 +301,11 @@ return [
             'text' => 'search',
             'topnav_right' => true,
         ],
+        */
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-        */
 
         // Sidebar items:
         /*
@@ -326,16 +326,30 @@ return [
             'label_color' => 'success',
         ],
         */
+        [
+            'text' => 'Administración de cuenta',
+            'route'  => 'profile.show',
+            'icon' => 'fas fa-fw fa-user',
+            'can'  => 'admin.count.index',
+        ],
         ['header' => 'OPCIONES DE CUENTA'],
         [
             'text' => 'Usuarios',
             'route' => 'admin.user.index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-users',
+            'can'  => 'admin.user.index',
         ],
         [
-            'text' => 'Informacion Animal',
+            'text' => 'Roles',
+            'route' => 'admin.role.index',
+            'icon' => 'fas fa-users-cog fa-lock',
+            'can'  => 'admin.role.index',
+        ],
+        [
+            'text' => 'Documentos',
             'route' => 'admin.information.index',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon'    => 'fas fa-fw fa-share',
+            'can'  => 'admin.information.index',
         ],
         /*
         [

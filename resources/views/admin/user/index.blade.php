@@ -8,7 +8,10 @@
 
 @section('content')
 
-    <a href="{{route('admin.user.create')}}">Creacion</a>
+    @can('admin.user.create')
+        <a href="{{route('admin.user.create')}}">Creacion</a>
+    @endcan
+    
 
     @include('admin.user.components.table')
 @stop

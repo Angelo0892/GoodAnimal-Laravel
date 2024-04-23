@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <form action="{{route('admin.information.store')}}" method="POST">
+    <form action="{{route('admin.information.store')}}" method="POST"  enctype="multipart/form-data">
         @csrf
 
         @include('admin.information.components.form')

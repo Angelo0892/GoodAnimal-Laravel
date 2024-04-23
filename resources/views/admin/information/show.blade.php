@@ -23,6 +23,11 @@
         <label for="">{{$information->date_time}}</label>
     </div>
 
+    <div>
+        <label for="" class="product-label">Imagen del Documento:</label>
+        <img src="/{{$information->imagen}}" alt="Imagen del producto" class="product-image">
+    </div>
+
     @foreach ($subtitles as $subtitle)
         <div>
             <label for="">{{$subtitle->subtitle}}</label>
@@ -32,6 +37,9 @@
         </div>
     @endforeach
     
+    <div>
+        <a href="{{route('admin.information.index')}}">Volver</a>
+    </div>
 @stop
 
 @section('css')

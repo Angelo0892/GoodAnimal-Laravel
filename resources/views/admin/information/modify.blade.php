@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <form action="{{route('admin.information.update', $information->id)}}" method="POST">
+    <form action="{{route('admin.information.update', $information->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 

@@ -17,7 +17,10 @@
         <label for="">Email: </label>
         <label for="">{{$user->email}}</label>
     </div>
-    
+
+    <div>
+        <a href="{{route('admin.user.index')}}">Volver</a>
+    </div>
 @stop
 
 @section('css')

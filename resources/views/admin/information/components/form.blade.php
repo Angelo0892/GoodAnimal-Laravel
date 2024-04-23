@@ -6,13 +6,30 @@
 <div>
     <label for="">Tipo de documento</label>
     <label for="">Noticia:</label>
-    <input type="radio" name="type" value="N">
+    <input type="radio" name="type" value="N" checked>
 
     <label for="">Cuidado animal:</label>
     <input type="radio" name="type" value="C">
 </div>
 
+@isset($information)
+    <div>
+        <label for="" class="product-label">Imagen del Documento:</label>
+        <img src="/{{$information->imagen}}" class="">
+    </div>
 
+    <div>
+        <input type="radio" id="radio_image" name="change_image" value="generate" onclick="generateImage('with_image')">
+        <label for="">Guardar nueva imagen</label>
+
+        <input type="radio" id="radio_no_image" name="change_image" value="no_generate" onclick="generateImage('without_image')" checked>
+        <label for="">Mantener imagen</label>
+    </div>
+@endisset
+
+<div id="generateImage_id">
+    <input id="default_btn_image" type="file" name="image" accept="image/*">
+</div>
 
 <div id="entries">
     @isset($information)
@@ -49,6 +66,25 @@
 </div>
 
 <script>
+
+    //Funciones para cambiar imagen
+
+    var camp_image = document.getElementById('generateImage_id');
+
+    camp_image.style.display = 'none';
+
+    function generateImage(generate) {
+
+        if (generate === 'with_image') {
+            camp_image.style.display = 'block';
+            
+        } else if (generate === 'without_image') {
+            camp_image.style.display = 'none';
+        }
+    }
+
+    //Funciones para los subtitulos
+
     document.getElementById("addEntry").addEventListener("click", function() {
         const entriesDiv = document.getElementById("entries");
         const newEntry = document.createElement("div");

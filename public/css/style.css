@@ -18,7 +18,16 @@ body{
     color: #95677d;   
 }
 
+.nav-item{
+    list-style-type: none;
+}
+
 .nav-link{
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     color: #95677d;
 }
 
@@ -273,10 +282,4 @@ body{
         height: 200px;
     }
 
-}
-
-
-
-.sub_titulo{
-    
 }

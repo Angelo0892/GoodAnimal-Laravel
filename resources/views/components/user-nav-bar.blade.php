@@ -16,11 +16,32 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('navigation.noticias')}}">Noticias</a>
           </li>
+        </ul>
+
+        <ul class="d-flex mb-lg-0">
+          @if (Route::has('login'))
+              @auth
+                  <li class="nav-item nav-login">
+                    <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>
+                  </li>
+                  @else
+                  
+                  <li class="nav-item nav-login">
+                    <a href="{{ route('login') }}" class="nav-link">Log in</a>
+                  </li>
+                  <li class="nav-item nav-login">
+                    @if (Route::has('register'))
+                      <a href="{{ route('register') }}" class="nav-link">Register</a>
+                    @endif
+                  </li>
+              @endauth
+          @endif
+        </ul>
+          <!--
           <li class="nav-item">
             <a class="nav-link" href="{{route('navigation.contacto')}}">Contactanos</a>
           </li>
-        </ul>
-  
+          -->
       </div>
     </div>  
 </nav>

@@ -7,6 +7,7 @@ use App\Models\Information;
 use App\Models\Subtitle;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Faker\Core\File;
 use Illuminate\Support\Facades\Auth;
 
 class InformationController extends Controller
@@ -36,13 +37,23 @@ class InformationController extends Controller
 
     public function store(Request $request){
 
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $destination = 'images/';
+            $filename = time() . '-' . $file->getClientOriginalName();
+            $uploadSuccess = $request->file('image')->move($destination, $filename);
+        }else{
+            $destination = '';
+            $filename = '';
+        }
+
         $now = Carbon::now()->format('Y-m-d H:i:s');
 
         $information = new Information();
         $information->title = $request->title;
         $information->type = $request->type;
         $information->date_time = $now;
-        $information->imagen = "123456789";
+        $information->imagen = $destination. $filename;
 
         $information->save();
 
@@ -63,11 +74,38 @@ class InformationController extends Controller
     public function update(Information $information, Request $request){
         $now = Carbon::now()->format('Y-m-d H:i:s');
         
-        $information->update([
-            'title' => $request->title,
-            'type' => $request->type,
-            'date_time' => $now
-        ]);
+        if($request->change_image === 'generate'){
+
+            if (file_exists($information->imagen)) {
+                // Eliminar la imagen
+                unlink($information->imagen); 
+            }
+
+            if($request->hasFile('image')){
+                $file = $request->file('image');
+                $destination = 'images/';
+                $filename = time() . '-' . $file->getClientOriginalName();
+                $uploadSuccess = $request->file('image')->move($destination, $filename);
+            }else{
+                $destination = '';
+                $filename = '';
+            }
+
+            $information->update([
+                'title' => $request->title,
+                'type' => $request->type,
+                'date_time' => $now,
+                'imagen' => $destination. $filename
+            ]);
+
+        }elseif($request->change_image === 'no_generate'){
+
+            $information->update([
+                'title' => $request->title,
+                'type' => $request->type,
+                'date_time' => $now,
+            ]);
+        }
 
         $user = Auth::user();
         $information->user()->attach($user->id, ['type' => "M", 'date_time' => $now]);
@@ -86,6 +124,12 @@ class InformationController extends Controller
     }
 
     public function destroy(Information $information){
+
+        if (file_exists($information->imagen)) {
+            // Eliminar la imagen
+            unlink($information->imagen); 
+        }
+
         $information->delete();
         return redirect()->route('admin.information.index');
     }

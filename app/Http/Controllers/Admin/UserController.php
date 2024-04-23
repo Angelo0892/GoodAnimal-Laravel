@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -17,18 +18,33 @@ class UserController extends Controller
     }
 
     public function create(){
-        return view('admin.user.create');
+        $roles = Role::all();
+        return view('admin.user.create', compact('roles'));
     }
 
     public function modify(User $user){
-        return view('admin.user.modify', compact('user'));
+
+        $roles = Role::all();
+        return view('admin.user.modify', compact('user', 'roles'));
     }
 
     public function show(User $user){
-        return view('admin.user.show', compact('user'));
+
+        $roles = Role::all();
+        return view('admin.user.show', compact('user', 'roles'));
     }
 
     public function store(Request $request){
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required',
+        ], [
+            'required' => 'El campo debe de ser llenado',
+            'email' => 'El campo debe de ser un email',
+            'unique' => 'El campo debe de ser unico'
+        ]);
 
         $hashedPassword = Hash::make($request->password);
 
@@ -39,6 +55,8 @@ class UserController extends Controller
 
         $user->save();
 
+        $user->roles()->sync($request->roles);
+
         return redirect()->route('admin.user.index');
     }
 
@@ -47,6 +65,17 @@ class UserController extends Controller
         $hashedPassword = Hash::make($request->password);
 
         if($request->change_password === 'generate'){
+
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required|email|unique:users,email,'.$user->id,
+                'password' => 'required',
+            ], [
+                'required' => 'El campo debe de ser llenado',
+                'email' => 'El campo debe de ser un email',
+                'unique' => 'El campo debe de ser unico'
+            ]);
+    
             $user->update([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -55,11 +84,22 @@ class UserController extends Controller
 
         }elseif($request->change_password === 'no_generate'){
 
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required|email|unique:users,email,'.$user->id,
+            ], [
+                'required' => 'El campo debe de ser llenado',
+                'email' => 'El campo debe de ser un email',
+                'unique' => 'El campo debe de ser unico'
+            ]);
+
             $user->update([
                 'name' => $request->name,
-                'email' => $request->email
+                'email' => $request->email,
             ]);
         }
+
+        $user->roles()->sync($request->roles);
 
         return redirect()->route('admin.user.index');
     }
